@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>vtop</title>
     <!-- FontAwesome for icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <!-- Material Symbols for thin outlined icons -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,200,0,0" />
     <style>
@@ -144,6 +144,52 @@
             border-color: #8ab4f8;
         }
 
+        .sidebar-dropdown {
+            position: relative;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+        }
+
+        .sidebar-dropdown .dropdown-menu {
+            display: none;
+            position: absolute;
+            left: 100%;
+            top: -10px;
+            background-color: #ffffff;
+            border: 1px solid #ddd;
+            box-shadow: 2px 2px 8px rgba(0,0,0,0.2);
+            z-index: 99999;
+            min-width: 250px;
+            padding: 10px 0;
+            font-size: 15px;
+        }
+
+        .sidebar-dropdown:hover .dropdown-menu {
+            display: block;
+        }
+
+        .dropdown-item {
+            padding: 10px 20px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: #222;
+        }
+
+        .dropdown-item:hover {
+            background-color: #f1f4f7;
+        }
+
+        .sidebar .dropdown-item i {
+            width: auto;
+            height: auto;
+            border: none;
+            display: inline-block;
+            font-size: 12px;
+        }
+        
         /* Main Content */
         .main-content {
             flex: 1;
@@ -266,7 +312,7 @@
     <!-- Top Navbar -->
     <div class="navbar">
         <div class="navbar-left">
-            <i class="fa-solid fa-bars menu-icon"></i>
+            <i class="fa fa-bars menu-icon"></i>
             <div class="brand-vit">VIT</div>
             <div class="campus-text">(Bhopal Campus)</div>
             <div class="nav-icons">
@@ -275,14 +321,14 @@
                 <span class="material-symbols-outlined" style="font-size: 19px; cursor: pointer; font-variation-settings: 'wght' 200;">star</span>
             </div>
             <div class="quick-links">
-                Quick Links <i class="fa-solid fa-caret-down"></i>
+                Quick Links <i class="fa fa-caret-down"></i>
             </div>
         </div>
         <div class="navbar-right">
             <div class="session-time" id="session-time-display">Session Time : 20m 00s</div>
             <div class="user-profile">
                 <div class="user-avatar"></div>
-                <span>23BCE10970 (STUDENT) <i class="fa-solid fa-caret-down"></i></span>
+                <span>23BCE10970 (STUDENT) <i class="fa fa-caret-down"></i></span>
             </div>
         </div>
     </div>
@@ -290,18 +336,32 @@
     <div class="container">
         <!-- Sidebar -->
         <div class="sidebar">
-            <i class="fa-solid fa-phone"></i>
-            <i class="fa-solid fa-briefcase"></i>
-            <i class="fa-solid fa-info-circle"></i>
-            <i class="fa-solid fa-paw"></i>
-            <i class="fa-solid fa-graduation-cap"></i>
-            <i class="fa-solid fa-building"></i>
-            <i class="fa-solid fa-key"></i>
-            <i class="fa-solid fa-sun"></i>
-            <i class="fa-solid fa-money-bill"></i>
-            <i class="fa-solid fa-house"></i>
-            <i class="fa-solid fa-trophy"></i>
-            <i class="fa-solid fa-lock"></i>
+            <i class="fa fa-phone-square"></i>
+            <div class="sidebar-dropdown">
+                <i class="fa fa-briefcase"></i>
+                <div class="dropdown-menu">
+                    <div class="dropdown-item"><i class="fa fa-dot-circle-o"></i> Profile</div>
+                    <div class="dropdown-item"><i class="fa fa-dot-circle-o"></i> Credentials</div>
+                    <div class="dropdown-item"><i class="fa fa-dot-circle-o"></i> Acknowledgement View</div>
+                    <div class="dropdown-item"><i class="fa fa-dot-circle-o"></i> Student Bank Info</div>
+                    <div class="dropdown-item"><i class="fa fa-dot-circle-o"></i> AAPAR ID Upload</div>
+                </div>
+            </div>
+            <i class="fa fa-info-circle"></i>
+            <i class="fa fa-paw"></i>
+            <i class="fa fa-graduation-cap"></i>
+            <i class="fa fa-university"></i>
+            <i class="fa fa-book"></i>
+            <i class="fa fa-fighter-jet"></i>
+            <i class="fa fa-certificate"></i>
+            <i class="fa fa-money"></i>
+            <i class="fa fa-graduation-cap"></i>
+            <i class="fa fa-home"></i>
+            <i class="fa fa-book"></i>
+            <i class="fa fa-shield"></i>
+            <i class="fa fa-trophy"></i>
+            <i class="fa fa-anchor"></i>
+            <i class="fa fa-lock"></i>
         </div>
 
         <!-- Main Content -->
