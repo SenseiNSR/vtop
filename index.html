@@ -88,6 +88,7 @@
             align-items: center;
             gap: 10px;
             cursor: pointer;
+            position: relative;
         }
 
         .user-avatar {
@@ -305,6 +306,75 @@
             cursor: pointer;
         }
 
+        .profile-dropdown {
+            display: none;
+            position: absolute;
+            top: 45px;
+            right: 0px;
+            width: 250px;
+            background: linear-gradient(to bottom, #397dc2, #245582);
+            border: 1px solid #1a3c5e;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            z-index: 1000;
+            padding: 0;
+            cursor: default;
+        }
+        
+        .profile-dropdown.show {
+            display: block;
+        }
+
+        .profile-dropdown-img-container {
+            display: flex;
+            justify-content: center;
+            padding: 20px 0;
+            border-bottom: 1px solid #173b5e;
+        }
+
+        .profile-dropdown-img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background-image: url('profile.jpg');
+            background-size: cover;
+            background-position: center;
+            border: 2px solid white;
+        }
+
+        .profile-dropdown-actions {
+            padding: 10px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .profile-dropdown-btn {
+            border: 1px solid #143555;
+            padding: 8px;
+            text-align: center;
+            cursor: pointer;
+            font-size: 14px;
+            border-radius: 3px;
+        }
+
+        .btn-login-history {
+            background-color: #00cce6;
+            color: black;
+            border: 1px solid #0099ab;
+        }
+        .btn-login-history:hover {
+            background-color: #00b3cc;
+        }
+
+        .btn-sign-out {
+            background-color: #248a3d;
+            color: white;
+            border: 1px solid #165c26;
+        }
+        .btn-sign-out:hover {
+            background-color: #1d7031;
+        }
+
     </style>
 </head>
 <body>
@@ -326,9 +396,20 @@
         </div>
         <div class="navbar-right">
             <div class="session-time" id="session-time-display">Session Time : 20m 00s</div>
-            <div class="user-profile">
+            <div class="user-profile" id="userProfileBtn">
                 <div class="user-avatar"></div>
                 <span>23BCE10970 (STUDENT) <i class="fa fa-caret-down"></i></span>
+                
+                <!-- Profile Dropdown -->
+                <div class="profile-dropdown" id="profileDropdown">
+                    <div class="profile-dropdown-img-container">
+                        <div class="profile-dropdown-img"></div>
+                    </div>
+                    <div class="profile-dropdown-actions">
+                        <div class="profile-dropdown-btn btn-login-history">Login History</div>
+                        <div class="profile-dropdown-btn btn-sign-out">Sign out</div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -425,6 +506,26 @@
         
         // Update every second (1000 milliseconds)
         setInterval(updateSessionTime, 1000);
+
+        // Profile Dropdown Toggle
+        const userProfileBtn = document.getElementById('userProfileBtn');
+        const profileDropdown = document.getElementById('profileDropdown');
+
+        userProfileBtn.addEventListener('click', function(e) {
+            profileDropdown.classList.toggle('show');
+        });
+
+        // Close dropdown when clicking outside
+        window.addEventListener('click', function(e) {
+            if (!userProfileBtn.contains(e.target)) {
+                profileDropdown.classList.remove('show');
+            }
+        });
+
+        // Prevent click inside dropdown from closing it
+        profileDropdown.addEventListener('click', function(e) {
+            e.stopPropagation();
+        });
     </script>
 </body>
 </html>
